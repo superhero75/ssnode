@@ -1,0 +1,15 @@
+docker run -d --name=ssnode -e MYSQL_HOST=35.200.39.18 -e MYSQL_PORT=3306 -e MYSQL_USER=ssnode -e MYSQL_PASS=QrzAr733R9wZ3vu3  -e METHOD=aes-128-ctr -e MYSQL_DB=ssnode -e PROTOCOL=auth_sha1_v4_compatible -e OBFS=tls1.2_ticket_auth_compatible --network=host --log-opt max-size=50m --log-opt max-file=3 --restart=always codesheng/ssnode
+
+ENV MYSQL_HOST=127.0.0.1          \
+    MYSQL_PORT=3306               \
+    MYSQL_USER=ss                 \
+    MYSQL_PASS=ss                 \
+    MYSQL_DB=shadowsocks          \
+    METHOD=chacha20               \
+    PROTOCOL=origin               \
+    OBFS=plain                    \
+    API_INTERFACE=sspanelv2
+
+
+
+docker run -d --name=ssnode -e MYSQL_HOST=35.200.39.18 -e MYSQL_PORT=3306 -e MYSQL_USER=ssnode -e MYSQL_PASS=QrzAr733R9wZ3vu3  -e METHOD=aes-128-ctr -e MYSQL_DB=ssnode -e PROTOCOL=auth_sha1_v4_compatible -e OBFS=tls1.2_ticket_auth_compatible --network=host --log-opt max-size=50m --log-opt max-file=3 --restart=always 10936713156a

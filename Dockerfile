@@ -33,9 +33,12 @@ RUN  apk --no-cache add \
                         linux-headers         && \
      ln -s /usr/bin/python3 /usr/bin/python   && \
      ln -s /usr/bin/pip3    /usr/bin/pip      && \
-     git clone https://github.com/CodeSheng/Shadowsowcks1Click.git "/root/shadowsocks" --depth 1 && \
-     cd  /root/shadowsocks                   && \
-     sh ./setup_cymysql.sh && sh ./initcfg.sh && \
+     git clone -b manyuser https://github.com/CodeSheng/shadowsocksr.git "/root/shadowsocks" --depth 1 && \
+     cd  /root/shadowsocks                    && \
+     cp apiconfig.py userapiconfig.py         && \
+     cp config.json user-config.json          && \
+     cp mysql.json usermysql.json             && \
+     pip install cymysql                      && \
      rm -rf ~/.cache && touch /etc/hosts.deny && \
      apk del --purge .build-deps
 
