@@ -35,13 +35,13 @@ RUN  apk --no-cache add \
      ln -s /usr/bin/pip3    /usr/bin/pip      && \
      git clone -b manyuser https://github.com/CodeSheng/shadowsocksr.git "/root/shadowsocks" --depth 1 && \
      cd  /root/shadowsocks                   && \
+     chmod +x setup_cymysql.sh && chmod +x ./initcfg.sh && ./setup_cymysql.sh && ./initcfg.sh \
      rm -rf ~/.cache && touch /etc/hosts.deny && \
      apk del --purge .build-deps
 
 WORKDIR /root/shadowsocks
 
-CMD chmod +x setup_cymysql.sh && chmod +x ./initcfg.sh && ./setup_cymysql.sh && ./initcfg.sh \
-    sed -i 's| "host": "35.200.39.18" | "host":  "${MYSQL_HOST}"|'                   /root/shadowsocks/usermysql.json && \
+CMD sed -i 's| "host": "35.200.39.18" | "host":  "${MYSQL_HOST}"|'                   /root/shadowsocks/usermysql.json && \
     sed -i 's| "port": 3306| "port": "${MYSQL_PORT}"|'                               /root/shadowsocks/usermysql.json && \
     sed -i 's| "user": "ss"| "user": "${MYSQL_USER}"|'                               /root/shadowsocks/usermysql.json && \
     sed -i 's| "password": "pass"| "password": "${MYSQL_PASS}"|'                     /root/shadowsocks/usermysql.json && \
