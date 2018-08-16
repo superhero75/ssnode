@@ -33,7 +33,7 @@ RUN  apk --no-cache add \
                         linux-headers         && \
      ln -s /usr/bin/python3 /usr/bin/python   && \
      ln -s /usr/bin/pip3    /usr/bin/pip      && \
-     git clone -b manyuser https://github.com/CodeSheng/shadowsocksr.git "/root/shadowsocks" --depth 1 && \
+     git clone -b master https://github.com/CodeSheng/Shadowsowcks1Click.git "/root/shadowsocks" --depth 1 && \
      cd  /root/shadowsocks                   && \
      sh ./setup_cymysql.sh && sh ./initcfg.sh && \
      rm -rf ~/.cache && touch /etc/hosts.deny && \
@@ -41,7 +41,7 @@ RUN  apk --no-cache add \
 
 WORKDIR /root/shadowsocks
 
-CMD sed -i 's| "host": "127.0.0.1" | "host": "${MYSQL_HOST}"|'                       /root/shadowsocks/usermysql.json && \
+CMD sed -i 's| "host": "127.0.0.1"| "host": "${MYSQL_HOST}"|'                        /root/shadowsocks/usermysql.json && \
     sed -i 's| "port": 3306| "port": "${MYSQL_PORT}"|'                               /root/shadowsocks/usermysql.json && \
     sed -i 's| "user": "ss"| "user": "${MYSQL_USER}"|'                               /root/shadowsocks/usermysql.json && \
     sed -i 's| "password": "pass"| "password": "${MYSQL_PASS}"|'                     /root/shadowsocks/usermysql.json && \
