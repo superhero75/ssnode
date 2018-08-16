@@ -33,7 +33,7 @@ RUN  apk --no-cache add \
                         linux-headers         && \
      ln -s /usr/bin/python3 /usr/bin/python   && \
      ln -s /usr/bin/pip3    /usr/bin/pip      && \
-     git clone -b master https://github.com/CodeSheng/Shadowsowcks1Click.git "/root/shadowsocks" --depth 1 && \
+     git clone https://github.com/CodeSheng/Shadowsowcks1Click.git "/root/shadowsocks" --depth 1 && \
      cd  /root/shadowsocks                   && \
      sh ./setup_cymysql.sh && sh ./initcfg.sh && \
      rm -rf ~/.cache && touch /etc/hosts.deny && \
