@@ -44,12 +44,12 @@ RUN  apk --no-cache add \
 
 WORKDIR /root/shadowsocks
 
-CMD sed -i 's| "host": "127.0.0.1"| "host": "${MYSQL_HOST}"|'                        /root/shadowsocks/usermysql.json && \
-    sed -i 's| "port": 3306| "port": "${MYSQL_PORT}"|'                               /root/shadowsocks/usermysql.json && \
-    sed -i 's| "user": "ss"| "user": "${MYSQL_USER}"|'                               /root/shadowsocks/usermysql.json && \
-    sed -i 's| "password": "pass"| "password": "${MYSQL_PASS}"|'                     /root/shadowsocks/usermysql.json && \
-    sed -i 's| "db": "sspanel"| "db": "${MYSQL_DB}"|'                                /root/shadowsocks/usermysql.json && \
-    sed -i 's| "method": "aes-128-ctr"| "method": "${METHOD}"|'                      /root/shadowsocks/user-config.json && \
-    sed -i 's| "protocol": "auth_aes128_md5"| "protocol": "${PROTOCOL}"|'            /root/shadowsocks/user-config.json && \
-    sed -i 's| "obfs": "tls1.2_ticket_auth_compatible"| "obfs": "${OBFS}"|'          /root/shadowsocks/user-config.json && \
+CMD sed -i "s| \"host\": \"127.0.0.1\"| \"host\": \"${MYSQL_HOST}\"|"                        /root/shadowsocks/usermysql.json && \
+    sed -i "s| \"port\": 3306| \"port\": \"${MYSQL_PORT}\"|"                                 /root/shadowsocks/usermysql.json && \
+    sed -i "s| \"user\": \"ss\"| \"user\": \"${MYSQL_USER}\"|"                               /root/shadowsocks/usermysql.json && \
+    sed -i "s| \"password\": \"pass\"| \"password\": \"${MYSQL_PASS}\"|"                     /root/shadowsocks/usermysql.json && \
+    sed -i "s| \"db\": \"sspanel\"| \"db\": \"${MYSQL_DB}\"|"                                /root/shadowsocks/usermysql.json && \
+    sed -i "s| \"method\": \"aes-128-ctr\"| \"method\": \"${METHOD}\"|"                      /root/shadowsocks/user-config.json && \
+    sed -i "s| \"protocol\": \"auth_aes128_md5\"| \"protocol\": \"${PROTOCOL}\"|"            /root/shadowsocks/user-config.json && \
+    sed -i "s| \"obfs\": \"tls1.2_ticket_auth_compatible\"| \"obfs\": \"${OBFS}\"|"          /root/shadowsocks/user-config.json && \
     python /root/shadowsocks/server.py
