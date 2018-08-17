@@ -8,8 +8,7 @@ ENV MYSQL_HOST=127.0.0.1          \
     MYSQL_DB=shadowsocks          \
     METHOD=chacha20               \
     PROTOCOL=origin               \
-    OBFS=plain                    \
-    API_INTERFACE=sspanelv2
+    OBFS=plain                    
 
 RUN  apk --no-cache add \
                         curl \
@@ -35,15 +34,15 @@ RUN  apk --no-cache add \
      ln -s /usr/bin/pip3    /usr/bin/pip      && \
      git clone -b manyuser https://github.com/CodeSheng/shadowsocksr.git "/root/shadowsocks" --depth 1 && \
      cd  /root/shadowsocks                    && \
-     sh setup_cymysql.sh && \
-     sh initcfg.sh && \
+     sh setup_cymysql.sh                      && \
+     sh initcfg.sh                            && \
      rm -rf ~/.cache && touch /etc/hosts.deny && \
      apk del --purge .build-deps
 
 WORKDIR /root/shadowsocks
 
 CMD sed -i "s|\"host\": \"127.0.0.1\"|\"host\": \"${MYSQL_HOST}\"|"                        /root/shadowsocks/usermysql.json && \
-    sed -i "s|\"port\": 3306|\"port\": \${MYSQL_PORT}\|"                                 /root/shadowsocks/usermysql.json && \
+    sed -i "s|\"port\": 3306|\"port\": ${MYSQL_PORT}|"                                     /root/shadowsocks/usermysql.json && \
     sed -i "s|\"user\": \"ss\"|\"user\": \"${MYSQL_USER}\"|"                               /root/shadowsocks/usermysql.json && \
     sed -i "s|\"password\": \"pass\"|\"password\": \"${MYSQL_PASS}\"|"                     /root/shadowsocks/usermysql.json && \
     sed -i "s|\"db\": \"sspanel\"|\"db\": \"${MYSQL_DB}\"|"                                /root/shadowsocks/usermysql.json && \
