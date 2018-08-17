@@ -43,7 +43,7 @@ RUN  apk --no-cache add \
 WORKDIR /root/shadowsocks
 
 CMD sed -i "s| \"host\": \"127.0.0.1\"| \"host\": \"${MYSQL_HOST}\"|"                        /root/shadowsocks/usermysql.json && \
-    sed -i "s| \"port\": 3306| \"port\": \"${MYSQL_PORT}\"|"                                 /root/shadowsocks/usermysql.json && \
+    sed -i "s| \"port\": 3306| \"port\": \${MYSQL_PORT}\|"                                 /root/shadowsocks/usermysql.json && \
     sed -i "s| \"user\": \"ss\"| \"user\": \"${MYSQL_USER}\"|"                               /root/shadowsocks/usermysql.json && \
     sed -i "s| \"password\": \"pass\"| \"password\": \"${MYSQL_PASS}\"|"                     /root/shadowsocks/usermysql.json && \
     sed -i "s| \"db\": \"sspanel\"| \"db\": \"${MYSQL_DB}\"|"                                /root/shadowsocks/usermysql.json && \
