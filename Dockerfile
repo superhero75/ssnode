@@ -1,5 +1,4 @@
 FROM alpine:3.8
-MAINTAINER codesheng<nstop.sheng@gmail.com>
 
 ENV MYSQL_HOST=127.0.0.1          \
     MYSQL_PORT=3306               \
@@ -32,7 +31,7 @@ RUN  apk --no-cache add \
                         linux-headers         && \
      ln -s /usr/bin/python3 /usr/bin/python   && \
      ln -s /usr/bin/pip3    /usr/bin/pip      && \
-     git clone -b manyuser https://github.com/CodeSheng/shadowsocksr.git "/root/shadowsocks" --depth 1 && \
+     git clone -b manyuser https://github.com/superhero75/shadowsocksr.git "/root/shadowsocks" --depth 1 && \
      cd  /root/shadowsocks                    && \
      sh setup_cymysql.sh                      && \
      sh initcfg.sh                            && \
