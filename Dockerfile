@@ -3,7 +3,7 @@ FROM alpine:3.8
 ENV MYSQL_HOST=127.0.0.1          \
     MYSQL_PORT=3306               \
     MYSQL_USER=ss                 \
-    MYSQL_PASS=ss                 \
+    MYSQL_PASS=pass               \
     MYSQL_DB=shadowsocks          \
     METHOD=chacha20               \
     PROTOCOL=origin               \
